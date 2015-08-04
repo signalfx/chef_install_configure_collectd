@@ -5,12 +5,23 @@
   end
 end
 
-parameters_array = Array.new
+uri_items = Hash.new()
+
+if (node["write_http"]["set_aws_instanceId"] != nil) &&  (node["write_http"]["set_aws_instanceId"] == true) 
+  begin
+    Timeout::timeout(10) do
+      AWSInstanceID = open('http://169.254.169.254/latest/meta-data/instance-id'){ |io| data = io.read }
+      puts uri_items["sfxdim_InstanceId"] = AWSInstanceID
+  end
+  rescue Timeout::Error
+     puts "ERROR: Unable to get AWS instance ID, Timeout due to reading"
+  end
+end
+
 parameters_object = node["write_http"]["Ingest_host_parameters"] 
 if parameters_object != nil
   parameters_object.each do |k,v|
-    temp = k + "=" + v
-    parameters_array << temp
+    puts uri_items["sfxdim_" + k] = v
   end
 end
 
@@ -19,8 +30,8 @@ template "/etc/collectd.d/managed_config/10-aggregation-cpu.conf" do
 end
 
 ingesturl = node["write_http"]["Ingest_host"]
-if parameters_array.length != 0
-  ingesturl = ingesturl + "?" + parameters_array.join("&")
+if uri_items.length != 0
+  ingesturl = ingesturl + "?" + URI.encode_www_form(uri_items)
 end
 
 

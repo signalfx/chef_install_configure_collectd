@@ -14,12 +14,6 @@ if File.exist?(conf_path)
   end
 end
 
-hostname = open('http://169.254.169.254/latest/meta-data/instance-id'){ |io| data = io.read }
-
 template conf_path do
   source "collectd.conf.erb"
-  variables({
-    :HOST_NAME => hostname
-  })
 end
-

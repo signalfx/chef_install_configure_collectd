@@ -42,7 +42,8 @@ Three main recipes are provided:
 
 ## Configure to send the metrics to SignalFx ##
 * Run the chef_install_configure_collectd::config-write_http recipe.
-* Users should rewrite attributes/default.rb defines their attributes. Example:
+* Users can use the default Ingest_host URL to send metrics to SignalFx Inc, but users have to fill your API TOKEN.
+* If users want use your own ingest host URL or ingest host parameters, you should rewrite attributes/default.rb defines their attributes. Example:
 
 ```ruby
    default["write_http"]["Ingest_host"] = "YOUR_INGEST_HOST"
@@ -64,7 +65,7 @@ LoadPlugin write_http
 
 # LICENSE & AUTHOR #
 
-Author:: Wentao Du (<wentao@signalfuse.com>)
+Author:: Wentao Du (<wentao@signalfx.com>)
 
 Copyright::2015, SignalFx, Inc.
 

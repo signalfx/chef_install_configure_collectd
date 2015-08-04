@@ -51,6 +51,7 @@ end
 
 case node[:platform]
   when "centos"
+# Get the centos integer version
     install_in_redhat("centos", node["platform_version"].to_i.to_s)
   when "amazon"
     install_in_redhat("amazon", node["platform_version"])
