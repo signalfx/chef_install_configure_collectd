@@ -42,20 +42,24 @@ Three main recipes are provided:
 
 ## Configure to send the metrics to SignalFx ##
 * Run the chef_install_configure_collectd::config-write_http recipe.
-* Users can use the default Ingest_host URL to send metrics to SignalFx Inc, but users have to fill your API TOKEN.
+* Users can use the default attributes in attributes/default.rb. The collectd will use the default Ingest_host URL to send metrics to SignalFx Inc, but users have to fill your API TOKEN.
 * If users want use your own ingest host URL or ingest host parameters, you should rewrite attributes/default.rb defines their attributes. Example:
 
 ```ruby
+   default["write_http"]["set_aws_instanceId"] = true
    default["write_http"]["Ingest_host"] = "YOUR_INGEST_HOST"
    default["write_http"]["API_TOKEN"] = "YOUR_API_TOKEN"
    default["write_http"]["Ingest_host_parameters"]["YOUR_KEY1"] = "YOUR_VALUE1"
    default["write_http"]["Ingest_host_parameters"]["YOUR_KEY2"] = "YOUR_VALUE2"
 ```
-The configuration file (10-write_http-plugin.conf) is like:
-```conf
+* The attribute default["write_http"]["set_aws_instanceId"] means if user want to integerate by AWS.
+* All of the other attributes are to configure the 10-write_http-plugin.conf file. 
+If you use the attributes above, the configuration file (10-write_http-plugin.conf) is like:
+
+```ruby
 LoadPlugin write_http
 <Plugin "write_http">
-  <URL "YOUR_INGEST_HOST&YOUR_KEY1=YOUR_VALUE1&YOUR_KEY2=YOUR_VALUE2">
+  <URL "YOUR_INGEST_HOST&sfxdim_InstanceId=YOUR_AWS_INSTANCE_ID&sfxdim_YOUR_KEY1=YOUR_VALUE1&sfxdim_YOUR_KEY2=YOUR_VALUE2">
     User "auth"
     Password "YOUR_API_TOKEN"
     Format "JSON"
