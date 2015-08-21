@@ -1,0 +1,12 @@
+LoadPlugin mysql
+<Plugin mysql>
+  <% @all_database.each do |key, database| -%>
+  <Database <%= key %> >
+    Host "<%= database['Host'] %>"
+    Socket "<%= database['Socket'] %>"
+    User "<%= database['User'] %>"
+    Password "<%= database['Password'] %>"
+    Database "<%= database['Database'] %>"
+  </Database>
+  <% end %>
+</Plugin>
