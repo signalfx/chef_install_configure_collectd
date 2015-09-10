@@ -7,11 +7,12 @@ end
 
 uri_items = Hash.new()
 
-if node["write_http"]["set_aws_instanceId"] == true 
+if node["write_http"]["AWS_integration"] == true 
   begin
     Timeout::timeout(10) do
-      AWSInstanceID = open('http://169.254.169.254/latest/meta-data/instance-id'){ |io| data = io.read }
-      puts uri_items["sfxdim_InstanceId"] = AWSInstanceID
+      AWS_metadata = open('http://169.254.169.254/2014-11-05/dynamic/instance-identity/document'){ |io| data = io.read }
+      AWS_JSON_Information = JSON.parse(AWS_metadata)
+      puts uri_items["sfxdim_AWSUniqueId"] = "#{AWS_JSON_Information["instanceId"]}_#{AWS_JSON_Information["region"]}_#{AWS_JSON_Information["accountId"]}"
   end
   rescue Timeout::Error
      puts "ERROR: Unable to get AWS instance ID, Timeout due to reading"
