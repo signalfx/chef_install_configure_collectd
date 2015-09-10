@@ -46,13 +46,13 @@ Three main recipes are provided:
 * If users want use your own ingest host URL or ingest host parameters, you should rewrite attributes/default.rb defines their attributes. Example:
 
 ```ruby
-   default["write_http"]["set_aws_instanceId"] = true
+   default["write_http"]["AWS_integration"] = true
    default["write_http"]["Ingest_host"] = "YOUR_INGEST_HOST"
    default["write_http"]["API_TOKEN"] = "YOUR_API_TOKEN"
    default["write_http"]["Ingest_host_parameters"]["YOUR_KEY1"] = "YOUR_VALUE1"
    default["write_http"]["Ingest_host_parameters"]["YOUR_KEY2"] = "YOUR_VALUE2"
 ```
-* The attribute default["write_http"]["set_aws_instanceId"] means if user want to integerate by AWS.
+* The attribute default["write_http"]["AWS_integration"] means if user want to integerate by AWS.
 * All of the other attributes are to configure the 10-write_http-plugin.conf file. 
 If you use the attributes above, the configuration file (10-write_http-plugin.conf) is like:
 

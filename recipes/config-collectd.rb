@@ -5,15 +5,11 @@ case node[:platform]
     conf_path = "/etc/collectd/collectd.conf"
 end
 
-if File.exist?(conf_path)
-  ruby_block "Rename old collectd.conf" do
-    block do
-      newname = conf_path + Time.now.utc.iso8601.gsub('-', '').gsub(':', '')
-      ::File.rename(conf_path , newname)
-    end
-  end
+template = "collectd.conf.erb"
+if node[:platform] == "centos" && node["platform_version"].to_i >= 7
+  template = "collectd-centos7.conf.erb"
 end
 
 template conf_path do
-  source "collectd.conf.erb"
+  source template
 end
