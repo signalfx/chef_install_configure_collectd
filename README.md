@@ -52,14 +52,14 @@ Three main recipes are provided:
    default["write_http"]["Ingest_host_parameters"]["YOUR_KEY1"] = "YOUR_VALUE1"
    default["write_http"]["Ingest_host_parameters"]["YOUR_KEY2"] = "YOUR_VALUE2"
 ```
-* The attribute default["write_http"]["AWS_integration"] means if user want to integerate by AWS.
+* To disable AWS metadata syncing in SignalFx set default["write_http"]["AWS_integration"] to integerate false.
 * All of the other attributes are to configure the 10-write_http-plugin.conf file. 
 If you use the attributes above, the configuration file (10-write_http-plugin.conf) is like:
 
 ```ruby
 LoadPlugin write_http
 <Plugin "write_http">
-  <URL "YOUR_INGEST_HOST&sfxdim_InstanceId=YOUR_AWS_INSTANCE_ID&sfxdim_YOUR_KEY1=YOUR_VALUE1&sfxdim_YOUR_KEY2=YOUR_VALUE2">
+  <URL "YOUR_INGEST_HOST&sfxdim_AWSUniqueId=AWS_UNIQUE_ID&sfxdim_YOUR_KEY1=YOUR_VALUE1&sfxdim_YOUR_KEY2=YOUR_VALUE2">
     User "auth"
     Password "YOUR_API_TOKEN"
     Format "JSON"

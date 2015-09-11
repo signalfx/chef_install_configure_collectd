@@ -15,7 +15,7 @@ if node["write_http"]["AWS_integration"] == true
       puts uri_items["sfxdim_AWSUniqueId"] = "#{AWS_JSON_Information["instanceId"]}_#{AWS_JSON_Information["region"]}_#{AWS_JSON_Information["accountId"]}"
   end
   rescue Timeout::Error
-     puts "ERROR: Unable to get AWS instance ID, Timeout due to reading"
+     puts "ERROR: Unable to get AWS integration info, Timeout while reading"
   end
 end
 
