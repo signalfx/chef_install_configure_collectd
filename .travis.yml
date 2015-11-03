@@ -1,0 +1,22 @@
+language: ruby
+sudo: false
+
+rvm:
+  - 2.0.0
+
+gemfile:
+  - Gemfile
+
+env:
+  - CHEF_VERSION=master
+  - CHEF_VERSION=12.4.3
+  - CHEF_VERSION=12.4.1
+
+branches:
+  only:
+    - master
+
+before_script:
+  - bundle exec berks
+
+script: bundle exec rspec 

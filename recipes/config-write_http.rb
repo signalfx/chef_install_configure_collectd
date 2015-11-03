@@ -1,49 +1,28 @@
-%w[ /etc/collectd.d /etc/collectd.d/managed_config ].each do |path|
-  directory path do
-    mode '0700'
-    action :create
-  end
-end
+# Recipe:: config-collectd
+#
+# Function:
+# This recipe can configure the write_http plugin to send metrics to signalfx
+#
+# Copyright (c) 2015 SignalFx, Inc, All Rights Reserved.
 
-uri_items = Hash.new()
+#
+# This fucntion is to get collectd configure file path. For centos and amazon,
+# the path is on /etc/collectd.conf. For ubuntu, the path is on /etc/collectd/collectd.conf.
+#
+require File.expand_path("../helper.rb", __FILE__)
+#require_relative './helper.rb'
 
-if node["write_http"]["AWS_integration"] == true 
-  begin
-    Timeout::timeout(10) do
-      AWS_metadata = open('http://169.254.169.254/2014-11-05/dynamic/instance-identity/document'){ |io| data = io.read }
-      AWS_JSON_Information = JSON.parse(AWS_metadata)
-      puts uri_items["sfxdim_AWSUniqueId"] = "#{AWS_JSON_Information["instanceId"]}_#{AWS_JSON_Information["region"]}_#{AWS_JSON_Information["accountId"]}"
-  end
-  rescue Timeout::Error
-     puts "ERROR: Unable to get AWS integration info, Timeout while reading"
-  end
-end
+install_package_on_redhat 'collectd-write_http'
 
-parameters_object = node["write_http"]["Ingest_host_parameters"] 
-if parameters_object != nil
-  parameters_object.each do |k,v|
-    puts uri_items["sfxdim_" + k] = v
-  end
-end
+ingesturl = getHttpUri
 
-template "/etc/collectd.d/managed_config/10-aggregation-cpu.conf" do
-  source "10-aggregation-cpu.conf.erb"
-end
-
-ingesturl = node["write_http"]["Ingest_host"]
-if uri_items.length != 0
-  ingesturl = ingesturl + "?" + URI.encode_www_form(uri_items)
-end
-
-
-template "/etc/collectd.d/managed_config/10-write_http-plugin.conf" do
-  source "10-write_http-plugin.conf.erb"
+template "#{node['collectd_conf_folder']}/10-write_http-plugin.conf" do
+  source '10-write_http-plugin.conf.erb'
   variables({
     :INGEST_HOST => ingesturl, 
-    :API_TOKEN => node["write_http"]["API_TOKEN"]
+    :API_TOKEN => node['write_http']['API_TOKEN']
   })
+  notifies :restart, 'service[collectd]'
 end
 
-service 'collectd' do
-  action [:enable, :stop, :start]
-end
+start_collectd

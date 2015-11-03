@@ -1,0 +1,13 @@
+LoadPlugin python
+<Plugin python>
+  ModulePath "/opt/signalfx-collectd-plugin"
+  LogTraces true
+  Interactive false
+  Import "signalfx_metadata"
+  <Module signalfx_metadata>
+    URL "<%= @INGEST_HOST %>"
+    Token "<%= @API_TOKEN %>" 
+    Notifications true
+    NotifyLevel "OKAY"
+  </Module>
+</Plugin>
