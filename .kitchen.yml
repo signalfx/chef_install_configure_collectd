@@ -1,0 +1,22 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_solo
+
+platforms:
+  - name: ubuntu-14.04
+  - name: centos-7.1
+  - name: centos-6.5
+  - name: centos-5.10
+
+suites:
+  - name: default
+    run_list:
+      - recipe[chef_install_configure_collectd::default]
+    attributes:
+      write_http:
+        AWS_integration: false
+        Ingest_host: "https://ingest.signalfx.com/v1/collectd"
+        API_TOKEN: "dsfsdfdfdsfsf"

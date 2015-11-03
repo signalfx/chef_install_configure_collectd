@@ -1,0 +1,9 @@
+.kitchen/
+.kitchen.local.yml
+.kitchen.aws.yml
+.kitchen.vagrant.yml
+Berksfile.lock
+bin/
+rakefile.rb
+vendor/
+berks-cookbooks/
