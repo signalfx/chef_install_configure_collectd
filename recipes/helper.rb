@@ -49,6 +49,21 @@ def getAWSInfo
   end
 end
 
+# get chefUniqueId
+
+def getChefUniqueId
+  begin
+    chef_server_url = Chef::Config[:chef_server_url]
+    chef_node_name = Chef::Config[:node_name]
+    if chef_node_name.nil? || chef_server_url.nil? || (chef_server_url.split('/').length < 4)
+      Chef::Log.warn('Unable to get Chef Node Name or Chef Server URL')
+      return ''
+    end
+    organisation = chef_server_url.split('/')[4]
+    return [organisation, chef_node_name].join('_')
+  end
+end
+
 # get http uri
 
 def getHttpUri
@@ -56,6 +71,11 @@ def getHttpUri
   aws_infor = getAWSInfo
   if aws_infor != ''
     puts uri_items['sfxdim_AWSUniqueId'] = aws_infor 
+  end
+
+  chefUniqueId = getChefUniqueId
+  if chefUniqueId != ''
+    puts uri_items['sfxdim_chefUniqueId'] = chefUniqueId
   end
 
   parameters_object = node['write_http']['Ingest_host_parameters']
@@ -118,3 +138,4 @@ def install_python_pip
     end
   end
 end
+
