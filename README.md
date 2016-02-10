@@ -1,5 +1,5 @@
 # chef_install_configure_collectd #
-[![Build Status](https://api.travis-ci.org/VictorDu/chef_install_configure_collectd.svg?branch=master)](https://travis-ci.org/VictorDu/chef_install_configure_collectd)
+[![Build Status](https://travis-ci.org/signalfx/chef_install_configure_collectd.svg?branch=master)](https://travis-ci.org/signalfx/chef_install_configure_collectd)
 
 # Description #
 
@@ -27,9 +27,10 @@ Use this cookbook to install and configure collectd to send data to SignalFx. It
 
 This cookbook has been tested on the following operating systems:
 
-CentOS 6, 7;
-Amazon Linux 1503, 1509;
-Ubuntu 1504, 1404, 1204
+CentOS 6, 7;  
+Amazon Linux 1503, 1509;  
+Ubuntu 1504, 1404, 1204;  
+Debian GNU/Linux 7, 8;
 
 # Cookbook dependencies #
 

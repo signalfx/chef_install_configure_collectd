@@ -16,7 +16,7 @@ def get_collectd_path
   case node['platform']
     when 'centos', 'amazon'
       return '/etc/collectd.conf'
-    when 'ubuntu'
+    when 'ubuntu', 'debian'
       return '/etc/collectd/collectd.conf'
   end
 end

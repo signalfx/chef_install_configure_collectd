@@ -139,3 +139,12 @@ def install_python_pip
   end
 end
 
+def get_debian_os_name
+  if (node['platform_version'].start_with?('7'))
+    return 'wheezy'
+  elsif (node['platform_version'].start_with?('8'))
+    return 'jessie'
+  else
+    raise ("We do not support this system #{node['platform']}_#{node['platform_version']}")
+  end
+end
