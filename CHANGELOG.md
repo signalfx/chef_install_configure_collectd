@@ -1,3 +1,7 @@
+## v0.1.3:
+* Support Debian GNU/Linux 7, 8
+* Add ChefUniqueId as a dimension
+
 ## v0.1.1:
 
 * Fix the bug about more bak file of collectd.conf file

@@ -55,3 +55,15 @@ default['SignalFx_ppa']['collectd']['uri'] =
   'ppa:signalfx/collectd-release'
 default['SignalFx_ppa']['collectd_plugin']['uri'] =
   'ppa:signalfx/collectd-plugin-release'
+
+# ppa links for Debian
+default['SignalFx_debian_ppa']['wheezy']['collectd']['uri'] = 
+  'deb https://dl.signalfx.com/debs/collectd/wheezy/release /'
+default['SignalFx_debian_ppa']['wheezy']['collectd_plugin']['uri'] = 
+  'deb https://dl.signalfx.com/debs/signalfx-collectd-plugin/wheezy/release /'
+default['SignalFx_debian_ppa']['jessie']['collectd']['uri'] = 
+  'deb https://dl.signalfx.com/debs/collectd/jessie/release /'
+default['SignalFx_debian_ppa']['jessie']['collectd_plugin']['uri'] = 
+  'deb https://dl.signalfx.com/debs/signalfx-collectd-plugin/jessie/release /'
+default['SignalFx_debian_ppa']['keyid'] = 
+  '185894C15AE495F6'
