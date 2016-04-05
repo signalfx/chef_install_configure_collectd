@@ -33,6 +33,9 @@ FQDNLookup true
 Interval 10
 Timeout 2
 ReadThreads 5
+WriteQueueLimitHigh 500000
+WriteQueueLimitLow  400000
+CollectInternalStats true
 
 LoadPlugin logfile
 
@@ -46,8 +49,23 @@ LoadPlugin logfile
 LoadPlugin cpu
 LoadPlugin cpufreq
 LoadPlugin df
+
 LoadPlugin disk
+<Plugin "disk">
+  Disk "/^loop\d+$/"
+  Disk "/^dm-\d+$/"
+  IgnoreSelected "true"
+</Plugin>
+
 LoadPlugin interface
+<Plugin "interface">
+  Interface "/^lo\d*$/"
+  Interface "/^docker.*/"
+  Interface "/^t(un|ap)\d*$/"
+  Interface "/^veth.*$/"
+  IgnoreSelected "true"
+</Plugin>
+
 LoadPlugin load
 LoadPlugin memory
 LoadPlugin protocols
