@@ -15,4 +15,6 @@ env:
 before_script:
   - bundle exec berks
 
-script: bundle exec rspec 
+script: 
+  - bundle exec foodcritic -f any .
+  - bundle exec rspec 
