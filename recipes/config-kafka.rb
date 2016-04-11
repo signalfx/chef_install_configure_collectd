@@ -11,7 +11,7 @@ require File.expand_path("../helper.rb", __FILE__)
 
 include_recipe 'chef_install_configure_collectd::config-jmx'
 
-template "#{node['collectd_conf_folder']}/20-kafka_82.conf" do
+template "#{node['collectd_managed_conf_folder']}/20-kafka_82.conf" do
   source '20-kafka_82.conf.erb'
   variables({
     :hostname => node['fqdn'],

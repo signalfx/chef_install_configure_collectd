@@ -16,7 +16,7 @@
 #
 #   You need to install the signalfx_types_db on your system and reference it
 #   from this config file:
-#     cp signalfx_types_db /etc/collectd.d/signalfx_types_db
+#     cp signalfx_types_db /etc/collectd/signalfx_types_db
 #
 #   If you get the error "Blah blah" it could be because you're version of java is different
 #   than the version of java that collectd was compiled with.  This is especially true for people
@@ -41,7 +41,7 @@
 #   points to your java application.  See 20-javageneric.conf if you want a
 #   catch-all config for any java app.
 
-TypesDB "/etc/collectd.d/signalfx_types_db"
+TypesDB "#{node['collectd_conf_folder']}/signalfx_types_db"
 LoadPlugin java
 <Plugin java>
     JVMArg "-verbose:jni"

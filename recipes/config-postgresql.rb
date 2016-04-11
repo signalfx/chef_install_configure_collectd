@@ -12,7 +12,7 @@ require File.expand_path("../helper.rb", __FILE__)
 include_recipe 'chef_install_configure_collectd::default'
 install_package_on_redhat 'collectd-postgresql'
 
-template "#{node['collectd_conf_folder']}/10-postgresql.conf" do
+template "#{node['collectd_managed_conf_folder']}/10-postgresql.conf" do
   source '10-postgresql.conf.erb'
   variables({
     :hostname => node['postgresql']['hostname'],
