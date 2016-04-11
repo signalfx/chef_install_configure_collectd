@@ -21,7 +21,7 @@ template "#{node['zookeeper']['python_folder']}/zk-collectd.py" do
   notifies :restart, 'service[collectd]'
 end
 
-template "#{node['collectd_conf_folder']}/20-zookeeper.conf" do
+template "#{node['collectd_managed_conf_folder']}/20-zookeeper.conf" do
   source '20-zookeeper.conf.erb'
   variables({
     :hostname => node['zookeeper']['hostname'],
