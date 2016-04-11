@@ -22,13 +22,13 @@ end
 
 template = get_collectd_conf_template
 
-template "#{node['collectd_conf_file']}" do
+template #{node['collectd_conf_file']} do
   source template
   notifies :restart, 'service[collectd]'
 end
 
-createDirectory("#{node['collectd_managed_conf_folder']}", '0700')
-createDirectory("#{node['collectd_filtering_conf_folder']}", '0700')
+createDirectory(#{node['collectd_managed_conf_folder']}, '0700')
+createDirectory(#{node['collectd_filtering_conf_folder']}, '0700')
 
 template "#{node['collectd_managed_conf_folder']}/10-aggregation-cpu.conf" do
   source '10-aggregation-cpu.conf.erb'
