@@ -21,7 +21,7 @@ template "#{node['elasticsearch']['python_folder']}/elasticsearch_collectd.py" d
   notifies :restart, 'service[collectd]'
 end
 
-template "#{node['collectd_conf_folder']}/10-elasticsearch.conf" do
+template "#{node['collectd_managed_conf_folder']}/10-elasticsearch.conf" do
   source '10-elasticsearch.conf.erb'
   variables({
     :clustername => node['elasticsearch']['clustername'],

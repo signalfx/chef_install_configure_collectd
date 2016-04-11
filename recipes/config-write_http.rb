@@ -16,7 +16,7 @@ install_package_on_redhat 'collectd-write_http'
 
 ingesturl = getHttpUri
 
-template "#{node['collectd_conf_folder']}/10-write_http-plugin.conf" do
+template "#{node['collectd_managed_conf_folder']}/10-write_http-plugin.conf" do
   source '10-write_http-plugin.conf.erb'
   variables({
     :INGEST_HOST => ingesturl, 

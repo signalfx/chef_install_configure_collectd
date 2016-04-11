@@ -20,7 +20,7 @@
 #   Create the directory managed_config and put
 #   extra config files there:
 #
-#     mkdir /etc/collectd.d/managed_config
+#     mkdir /etc/collectd/managed_config
 #
 
 TypesDB "/usr/share/collectd/types.db"
@@ -91,4 +91,7 @@ LoadPlugin uptime
 
 # Note: You will get warnings on startup if you have no *.conf files.
 #       This is ok: CollectD will still start.
-Include "/etc/collectd.d/managed_config/*.conf"
+Include "/etc/collectd/managed_config/*.conf"
+
+Include "/etc/collectd/filtering_config/*.conf"
+

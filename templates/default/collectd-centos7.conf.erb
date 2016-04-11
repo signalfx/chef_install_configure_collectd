@@ -41,7 +41,7 @@ LoadPlugin logfile
 
 <Plugin logfile>
         LogLevel "info"
-        File "stdout"
+        File "/var/log/collectd.log"
         Timestamp true
         PrintSeverity false
 </Plugin>
@@ -92,3 +92,6 @@ LoadPlugin uptime
 # Note: You will get warnings on startup if you have no *.conf files.
 #       This is ok: CollectD will still start.
 Include "/etc/collectd.d/managed_config/*.conf"
+
+Include "/etc/collectd.d/filtering_config/*.conf"
+

@@ -36,7 +36,7 @@ template "#{node['mongodb']['dbfile_folder']}/types.db" do
   notifies :restart, 'service[collectd]'
 end
 
-template "#{node['collectd_conf_folder']}/10-mongodb.conf" do
+template "#{node['collectd_managed_conf_folder']}/10-mongodb.conf" do
   source '10-mongodb.conf.erb'
   variables({
     :dbfile_path => "#{node['mongodb']['dbfile_folder']}/types.db",
