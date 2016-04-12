@@ -21,7 +21,7 @@ template "#{node['redis_slave']['python_folder']}/redis_info.py" do
   notifies :restart, 'service[collectd]'
 end
 
-template "#{node['collectd_conf_folder']}/10-redis_slave.conf" do
+template "#{node['collectd_managed_conf_folder']}/10-redis_slave.conf" do
   source '10-redis_slave.conf.erb'
   variables({
     :hostname => node['redis_slave']['hostname'],

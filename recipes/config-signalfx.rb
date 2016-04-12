@@ -17,7 +17,7 @@ install_package 'signalfx-collectd-plugin'
 
 ingesturl = getHttpUri
 
-template "#{node['collectd_conf_folder']}/10-signalfx.conf" do
+template "#{node['collectd_managed_conf_folder']}/10-signalfx.conf" do
   source '10-signalfx.conf.erb'
   variables({
     :INGEST_HOST => ingesturl,

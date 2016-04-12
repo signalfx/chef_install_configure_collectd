@@ -37,7 +37,7 @@ template "#{node['docker']['dbfile_folder']}/dockerplugin.db" do
   notifies :restart, 'service[collectd]'
 end
 
-template "#{node['collectd_conf_folder']}/10-docker.conf" do
+template "#{node['collectd_managed_conf_folder']}/10-docker.conf" do
   source '10-docker.conf.erb'
   variables({
     :dbfile_path => "#{node['docker']['dbfile_folder']}/dockerplugin.db",
