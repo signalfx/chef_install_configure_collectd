@@ -9,15 +9,13 @@
 
 require File.expand_path("../helper.rb", __FILE__)
 
-#
-# This function is to get the template file. For centos7 we need use the collectd-centos7.conf.erb
-# The other os, we need collectd.conf.erb
-#
 def get_collectd_conf_template
-  if node['platform'] == 'centos' && node['platform_version'].to_i >= 7
-    return 'collectd-centos7.conf.erb'
+  case node['platform_family']
+    when 'rhel'
+      return 'collectd-rhel.conf.erb'
+    when 'debian'
+      return 'collectd.conf.erb'
   end
-  return 'collectd.conf.erb'
 end
 
 template = get_collectd_conf_template

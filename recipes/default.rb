@@ -1,17 +1,17 @@
 def get_collectd_conf_folder
-  case node['platform']
-    when 'centos', 'amazon'
+  case node['platform_family']
+    when 'rhel'
       return '/etc/collectd.d'
-    when 'ubuntu', 'debian'
+    when 'debian'
       return '/etc/collectd'
   end
 end
 
 def get_collectd_conf_file
-  case node['platform']
-    when 'centos', 'amazon'
+  case node['platform_family']
+    when 'rhel'
       return '/etc/collectd.conf'
-    when 'ubuntu', 'debian'
+    when 'debian'
       return '/etc/collectd/collectd.conf'
   end
 end
