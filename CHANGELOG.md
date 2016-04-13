@@ -1,3 +1,9 @@
+## v0.1.4
+* add types.db to chef for plugin update collectd.conf to reflect modern day
+* fix chef install and configuration
+* add foodcritic
+* fix amazon install and logging
+
 ## v0.1.3:
 * Support Debian GNU/Linux 7, 8
 * Add ChefUniqueId as a dimension
