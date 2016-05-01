@@ -27,18 +27,3 @@ LoadPlugin aggregation
     CalculateAverage true
   </Aggregation>
 </Plugin>
-
-LoadPlugin match_regex
-
-<Chain "PostCache">
-  <Rule "each_cpu_ignore">
-    <Match regex>
-      Plugin "^cpu$"
-    </Match>
-    <Target "write">
-      Plugin "aggregation"
-    </Target>
-    Target stop
-  </Rule>
-  Target "write"
-</Chain>
