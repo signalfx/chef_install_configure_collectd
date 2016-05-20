@@ -25,9 +25,6 @@
 
 TypesDB "/usr/share/collectd/types.db"
 
-#   If you use the Hostname parameter, you
-#   must quote ("...") the second argument
-
 <% if node['SignalFx']['collectd']['FQDNLookup'] == false -%>
 Hostname "<%= node['fqdn'] %>"
 <% end -%>
