@@ -24,6 +24,7 @@
 #
 
 TypesDB "/usr/share/collectd/types.db"
+
 <% if node['SignalFx']['collectd']['FQDNLookup'] == false -%>
 Hostname "<%= node['fqdn'] %>"
 <% end -%>
