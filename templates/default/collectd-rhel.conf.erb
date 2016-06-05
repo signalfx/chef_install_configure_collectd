@@ -25,13 +25,13 @@
 
 TypesDB "/usr/share/collectd/types.db"
 
-#   If you use the Hostname parameter, you
-#   must quote ("...") the second argument
-### Hostname "<YOUR_HOSTNAME_HERE>"
+<% if node['SignalFx']['collectd']['FQDNLookup'] == false -%>
+Hostname "<%= node['fqdn'] %>"
+<% end -%>
 
-FQDNLookup true
-Interval 10
-Timeout 2
+FQDNLookup <%= node['SignalFx']['collectd']['FQDNLookup'] %>
+Interval <%= node['SignalFx']['collectd']['interval'] %>
+Timeout <%= node['SignalFx']['collectd']['timeout'] %>
 ReadThreads 5
 WriteQueueLimitHigh 500000
 WriteQueueLimitLow  400000
