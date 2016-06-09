@@ -47,13 +47,15 @@ This cookbook requires the following cookbooks:
 * Use the default recipe to install collectd, configure plugins, and configure collectd to send metrics to SignalFx. 
 * Use the individual collectd plugin recipes to install individual collectd plugins.
 
-## 1. Install on your local machine ##
+## 1. Install all cookbook dependencies and upload to the Chef Server
 
-```knife cookbook site install chef_install_configure_collectd```
+## 2. Install on your local machine ##
 
-This command installs the chef_install_configure_collectd cookbook with all dependencies.
+```knife cookbook site install chef_install_configure_collectd --skip-dependencies```
 
-## 2. Supply your SignalFx API token.
+This command installs the `chef_install_configure_collectd` cookbook to your local machine.
+
+## 3. Supply your SignalFx API token.
 
 In order to send data to SignalFx, you must provide a value for your SignalFx API token in `attributes/default.rb` as follows, replacing `YOUR_SIGNALFX_API_TOKEN` with the API token for your SignalFx organization:
 
@@ -61,18 +63,18 @@ In order to send data to SignalFx, you must provide a value for your SignalFx AP
 default['write_http']['API_TOKEN'] = 'YOUR_SIGNALFX_API_TOKEN'
 ```
 
-## 3. (Optional) Supply configuration for collectd and plugins.
+## 4. (Optional) Supply configuration for collectd and plugins.
 
 This cookbook includes default configuration for collectd in `attributes/default.rb`, and for plugins in individually-named files in the attributes directory. Before using this cookbook to install collectd plugins, supply configuration values for each plugin you will install in that plugin's attributes file. 
 
 See [Attributes](#attributes) below for a detailed list of all available attributes.
 
-## 4. Upload to Chef server ##
-```knife cookbook upload chef_install_configure_collectd --include-dependencies```
+## 5. Upload to Chef server ##
+```knife cookbook upload chef_install_configure_collectd```
 
-This command uploads the `chef_install_configure_collectd` cookbook and all its dependencies to your Chef server.
+This command uploads the `chef_install_configure_collectd` cookbook to the Chef server.
 
-## 5. Apply to Chef clients ##
+## 6. Apply to Chef clients ##
 
 ### Using bootstrap ###
 
