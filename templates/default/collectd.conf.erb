@@ -40,10 +40,10 @@ CollectInternalStats true
 LoadPlugin logfile
 
 <Plugin logfile>
-        LogLevel "err"
-        File "/var/log/collectd.log"
+        LogLevel "<%= node['SignalFx']['collectd']['logfile']['LogLevel'] %>"
+        File "<%= node['SignalFx']['collectd']['logfile']['File'] %>"
         Timestamp true
-        PrintSeverity false
+        PrintSeverity <%= node['SignalFx']['collectd']['logfile']['PrintSeverity'] %>
 </Plugin>
 
 LoadPlugin cpu

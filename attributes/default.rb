@@ -7,3 +7,7 @@ default['collectd_version'] = 'latest'
 default['SignalFx']['collectd']['interval'] = 10
 default['SignalFx']['collectd']['timeout'] = 2
 default['SignalFx']['collectd']['FQDNLookup'] = true
+
+default['SignalFx']['collectd']['logfile']['LogLevel'] = 'info'
+default['SignalFx']['collectd']['logfile']['File'] = '/var/log/collectd.log'
+default['SignalFx']['collectd']['logfile']['PrintSeverity'] = false

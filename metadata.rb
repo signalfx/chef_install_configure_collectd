@@ -6,7 +6,7 @@ issues_url 'https://github.com/signalfx/chef_install_configure_collectd/issues'
 license 'Copyright SignalFx, Inc. All rights reserved'
 description 'This cookbook provides a set of recipes to install and cofigure the collectd'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version '0.1.6'
+version '0.1.7'
 
 supports "centos"
 supports "amazon"

@@ -16,6 +16,11 @@ def get_collectd_conf_file
   end
 end
 
+# required to work around issue with collectd logging on centos 7
+if node['platform'] == 'centos' and node['platform_version'].to_f >= 7.0 
+    node.override['SignalFx']['collectd']['logfile']['File'] =  "stdout"
+end
+
 node.default['collectd_conf_file'] = get_collectd_conf_file
 node.default['collectd_conf_folder'] = get_collectd_conf_folder
 node.default['collectd_managed_conf_folder'] = "#{node['collectd_conf_folder']}/managed_config"
