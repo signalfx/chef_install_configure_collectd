@@ -17,7 +17,7 @@
 #   None
 
 # Config file modifications:
-#   Change the Host/Port/User/Password/Database/Instance to settings that allow you to 
+#   Change the Host/Port/User/Password/Database to settings that allow you to 
 #   connect to the mongodb instance. Each mongodb instance gets it's own module. 
 #   Included is one sample master config.
 
@@ -32,6 +32,5 @@ LoadPlugin python
     User "<%= @user %>"
     Password "<%= @password %>"
     Database "<%= @database.join('" "') %>"
-    Instance "<%= @instance %>"
   </Module>
 </Plugin>
