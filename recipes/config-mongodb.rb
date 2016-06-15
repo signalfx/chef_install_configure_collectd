@@ -45,7 +45,6 @@ template "#{node['collectd_managed_conf_folder']}/10-mongodb.conf" do
     :port => node['mongodb']['port'],
     :user => node['mongodb']['user'],
     :password => node['mongodb']['password'],
-    :instance => node['mongodb']['instance'],
     :database => node['mongodb']['database']
   })
   notifies :restart, 'service[collectd]'
