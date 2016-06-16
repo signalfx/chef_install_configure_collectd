@@ -28,8 +28,8 @@ Use this cookbook to install and configure collectd to send data to SignalFx. It
 This cookbook has been tested on the following operating systems:
 
 CentOS 6, 7;  
-Amazon Linux 1503, 1509;  
-Ubuntu 1504, 1404, 1204;  
+Amazon Linux 1503, 1509, 1603;  
+Ubuntu 1204, 1404, 1504;  
 Debian GNU/Linux 7, 8;
 
 # Cookbook dependencies #
@@ -92,6 +92,12 @@ After supplying attributes, use `knife bootstrap` to apply the recipes to Chef c
    - default['write_http']['Ingest_host'] : URL of the SignalFx ingest service.
    - default['write_http']['API_TOKEN'] : Your SignalFx API token. 
    - default['collectd_version'] : The version of SignalFx collectd to install. (default: 'latest')
+   - default['SignalFx']['collectd']['interval'] : Interval in seconds to collectd data (default: 10 seconds)
+   - default['SignalFx']['collectd']['timeout'] : Collectd Timeout (default: 2 iterations)
+   - default['SignalFx']['collectd']['FQDNLookup'] : Collectd Directive to lookup FQDN when setting hostname (default: 'true')
+   - default['SignalFx']['collectd']['logfile']['LogLevel'] : Collectd Logging Level (default: 'info')
+   - default['SignalFx']['collectd']['logfile']['File'] : Collectd Log file (default: '/var/log/collectd.log')
+   - default['SignalFx']['collectd']['logfile']['PrintSeverity'] : Collectd directive to log severity level (default: 'false')
 
 * To add a dimension to every datapoint sent to SignalFx, add an entry to default.rb as follows:
 
@@ -113,8 +119,8 @@ After supplying attributes, use `knife bootstrap` to apply the recipes to Chef c
 
 ### Docker ###
 * attributes/docker_plugin.rb
-   - default['docker']['dbfile_folder'] : The location on disk to store this plugin's DB files. (default: '/opt/setup/scripts')
-   - default['docker']['python_folder'] : The location on disk to store this plugin's Python files. (default: '/opt/setup/scripts')
+   - default['docker']['dbfile_folder'] : The location on disk to store this plugin's DB files. (default: '/usr/share/collectd/docker-collectd-plugin')
+   - default['docker']['python_folder'] : The location on disk to store this plugin's Python files. (default: '/usr/share/collectd/docker-collectd-plugin')
    - default['docker']['base_url'] : URL at which to connect to the Docker instance to be monitored. (default : 'unix://var/run/docker.sock')
 
 ### Elasticsearch ###
