@@ -15,6 +15,7 @@ Use this cookbook to install and configure collectd to send data to SignalFx. It
    - ElasticSearch 
    - Kafka 
    - Memcached 
+   - Mesos 
    - MySQL 
    - Nginx 
    - Varnish 
@@ -137,6 +138,23 @@ After supplying attributes, use `knife bootstrap` to apply the recipes to Chef c
 * attributes/memcached_plugin.rb
    - default['memcached']['hostname'] : Memcached hostname
    - default['memcached']['port'] : Memcached port
+
+### Mesos ###
+* attributes/mesos_master_plugin.rb
+   - default['mesos']['master']['python_folder'] The location on disk to store this plugin's Python files. (default: '/usr/share/collectd/mesos-collectd-plugin')
+   - default['mesos']['master']['cluster'] = Cluster Name
+   - default['mesos']['master']['instance'] = Instance Name
+   - default['mesos']['master']['binary_path'] = Path to the directory containing mesos executables (default: '/usr/bin')
+   - default['mesos']['master']['hostname'] = Mesos Master Hostname (default: 'localhost')
+   - default['mesos']['master']['port'] = Mesos Master Port (default: 5050)
+
+* attributes/mesos_slave_plugin.rb
+   - default['mesos']['slave']['python_folder'] The location on disk to store this plugin's Python files. (default: '/usr/share/collectd/mesos-collectd-plugin')
+   - default['mesos']['slave']['cluster'] = Cluster Name
+   - default['mesos']['slave']['instance'] = Instance Name
+   - default['mesos']['slave']['binary_path'] = Path to the directory containing mesos executables (default: '/usr/bin')
+   - default['mesos']['slave']['hostname'] = Mesos Slave Hostname (default: 'localhost')
+   - default['mesos']['slave']['port'] = Mesos Slave Port (default: 5050)
 
 ### MySQL ###
 * attributes/mysql_plugin.rb
