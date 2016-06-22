@@ -1,0 +1,19 @@
+<LoadPlugin "python">
+  Globals true
+</LoadPlugin>
+
+<Plugin "python">
+  ModulePath "<%= @python_folder %>"
+
+  Import "mesos-master"
+
+  <Module "mesos-master">
+    Cluster "<%= @cluster %>"
+    Instance "<%= @instance %>"
+    Path "<%= @binary_path %>"
+    Host "<%= @hostname %>"
+    Port <%= @port %>
+    Verbose false
+  </Module>
+</Plugin>
+
