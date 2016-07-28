@@ -5,39 +5,39 @@
 
 Use this cookbook to install and configure collectd to send data to SignalFx. It can perform the following tasks:
 
-- Install [SignalFx's build of collectd](https://github.com/signalfx/collectd), an open-source monitoring daemon. 
+- Install [SignalFx's build of collectd](https://github.com/signalfx/collectd), an open-source monitoring daemon.
 - Install and configure [SignalFx's metadata plugin for collectd](https://github.com/signalfx/signalfx-collectd-plugin)
 - Configure collectd's write_http plugin to send data to SignalFx
 - Install and configure collectd plugins for data collection from the following software:
-   - Apache webserver   
-   - Cassandra 
+   - Apache webserver
+   - Cassandra
    - Docker
-   - ElasticSearch 
+   - ElasticSearch
    - Iostat
-   - Kafka 
-   - Memcached 
-   - Mesos 
+   - Kafka
+   - Memcached
+   - Mesos
    - MongoDB
-   - MySQL 
-   - Nginx 
+   - MySQL
+   - Nginx
    - Postgres
    - Redis
-   - Varnish 
+   - Varnish
    - Vmstat
-   - Zookeeper 
+   - Zookeeper
 
 # System Requirements #
 
 This cookbook has been tested on the following operating systems:
 
-CentOS 6, 7;  
-Amazon Linux 1503, 1509, 1603;  
-Ubuntu 1204, 1404, 1504, 1604;  
+CentOS 6, 7;
+Amazon Linux 1503, 1509, 1603;
+Ubuntu 1204, 1404, 1504, 1604;
 Debian GNU/Linux 7, 8;
 
 # Cookbook dependencies #
 
-This cookbook requires the following cookbooks: 
+This cookbook requires the following cookbooks:
 
 - apt (2.8.2)
 - yum-epel (0.6.3)
@@ -47,7 +47,7 @@ This cookbook requires the following cookbooks:
 
 # Usage #
 
-* Use the default recipe to install collectd, configure plugins, and configure collectd to send metrics to SignalFx. 
+* Use the default recipe to install collectd, configure plugins, and configure collectd to send metrics to SignalFx.
 * Use the individual collectd plugin recipes to install individual collectd plugins.
 
 ## 1. Install all cookbook dependencies and upload to the Chef Server
@@ -68,7 +68,7 @@ default['write_http']['API_TOKEN'] = 'YOUR_SIGNALFX_API_TOKEN'
 
 ## 4. (Optional) Supply configuration for collectd and plugins.
 
-This cookbook includes default configuration for collectd in `attributes/default.rb`, and for plugins in individually-named files in the attributes directory. Before using this cookbook to install collectd plugins, supply configuration values for each plugin you will install in that plugin's attributes file. 
+This cookbook includes default configuration for collectd in `attributes/default.rb`, and for plugins in individually-named files in the attributes directory. Before using this cookbook to install collectd plugins, supply configuration values for each plugin you will install in that plugin's attributes file.
 
 See [Attributes](#attributes) below for a detailed list of all available attributes.
 
@@ -81,7 +81,7 @@ This command uploads the `chef_install_configure_collectd` cookbook to the Chef 
 
 ### Using bootstrap ###
 
-After supplying attributes, use `knife bootstrap` to apply the recipes to Chef clients. For example, the following command applies the `chef_install_configure_collectd` recipe and installs the Apache collectd plugin: 
+After supplying attributes, use `knife bootstrap` to apply the recipes to Chef clients. For example, the following command applies the `chef_install_configure_collectd` recipe and installs the Apache collectd plugin:
 
 ```knife bootstrap $ip --ssh-user $username --node-name $nodename --run-list 'recipe[chef_install_configure_collectd], recipe[chef_install_configure_collectd::config-apache]'```
 
@@ -89,11 +89,11 @@ After supplying attributes, use `knife bootstrap` to apply the recipes to Chef c
 
 ## Collectd Attributes ##
 
-* attributes/SignalFx_repo.rb - Contains the names and locations of SignalFx collectd packages. 
+* attributes/SignalFx_repo.rb - Contains the names and locations of SignalFx collectd packages.
 * attributes/default.rb - Basic attributes for SignalFx configuration.
    - default['write_http']['AWS_integration'] : 'true' if you want to sync AWS metadata to SignalFx, otherwise 'false' (default: 'true')
    - default['write_http']['Ingest_host'] : URL of the SignalFx ingest service.
-   - default['write_http']['API_TOKEN'] : Your SignalFx API token. 
+   - default['write_http']['API_TOKEN'] : Your SignalFx API token.
    - default['collectd_version'] : The version of SignalFx collectd to install. (default: 'latest')
    - default['SignalFx']['collectd']['interval'] : Interval in seconds to collectd data (default: 10 seconds)
    - default['SignalFx']['collectd']['timeout'] : Collectd Timeout (default: 2 iterations)
@@ -108,6 +108,10 @@ After supplying attributes, use `knife bootstrap` to apply the recipes to Chef c
    default["write_http"]["Ingest_host_parameters"]["YOUR_KEY1"] = "YOUR_VALUE1"
    default["write_http"]["Ingest_host_parameters"]["YOUR_KEY2"] = "YOUR_VALUE2"
 ```
+
+* To enable the built-in statsd listener, set the following:
+   - default['SignalFx']['collectd']['enable_statsd'] = true
+   - default['SignalFx']['collectd']['statsd_port'] : The port on which to listen (default 8125)
 
 ## Plugin-specific Attributes ##
 
@@ -187,12 +191,12 @@ After supplying attributes, use `knife bootstrap` to apply the recipes to Chef c
 ### Redis ###
 * attributes/redis_master_plugin.rb
    - default['redis_master']['hostname'] : Hostname or IP address of your Redis master instance.
-   - default['redis_master']['port'] : Port on which your Redis master runs. 
+   - default['redis_master']['port'] : Port on which your Redis master runs.
    - default['redis_master']['python_folder'] : The location on disk of the collectd Python plugin. (default: '/usr/share/collectd/python')
 
 * attributes/redis_slave_plugin.rb
    - default['redis_slave']['hostname'] : Hostname or IP address of your Redis slave instance.
-   - default['redis_slave']['port'] : Port on which your Redis slave runs. 
+   - default['redis_slave']['port'] : Port on which your Redis slave runs.
    - default['redis_slave']['python_folder'] : The location on disk of the collectd Python plugin. (default: '/usr/share/collectd/python')
 
 ### Vmstat ###
@@ -203,9 +207,9 @@ After supplying attributes, use `knife bootstrap` to apply the recipes to Chef c
    - default['vmstat']['python_folder'] : The location on disk of the collectd Python plugin. (default: '/usr/share/collectd/python')
 
 ### Zookeeper ###
-* attributes/zookeeper_plugin.rb 
+* attributes/zookeeper_plugin.rb
    - default['zookeeper']['hostname'] = Hostname or IP address of your Zookeeper instance.
-   - default['zookeeper']['port'] : Port on which your Zookeeper instance runs. 
+   - default['zookeeper']['port'] : Port on which your Zookeeper instance runs.
    - default['zookeeper']['python_folder'] : The location on disk of the collectd Python plugin. (default: '/usr/share/collectd/python')
 
 # License & Author #
