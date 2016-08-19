@@ -1,3 +1,8 @@
+## v0.1.10
+* removed beta support for mongodb
+* added support for mongodb 3.2.8
+* added supported ubuntu 16.04
+
 ## v0.1.4
 * add types.db to chef for plugin update collectd.conf to reflect modern day
 * fix chef install and configuration
