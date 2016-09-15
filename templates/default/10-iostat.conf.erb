@@ -1,0 +1,14 @@
+<LoadPlugin python>
+    Globals true
+</LoadPlugin>
+
+<Plugin python>
+    ModulePath "<%= @python_folder %>"
+    Import "collectd_iostat_python"
+
+    <Module collectd_iostat_python>
+        Path "<%= @path %>"
+        Verbose <%= @verbose %>
+        Include <%= @include %>
+    </Module>
+</Plugin>
