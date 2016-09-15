@@ -1,3 +1,7 @@
+## v0.1.11
+* added iostat plugin
+* added vmstat plugin
+
 ## v0.1.10
 * removed beta support for mongodb
 * added support for mongodb 3.2.8

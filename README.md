@@ -130,6 +130,13 @@ After supplying attributes, use `knife bootstrap` to apply the recipes to Chef c
    - default['elasticsearch']['indexes'] : Which indexes to monitor. (default: '_all')
    - default['elasticsearch']['python_folder'] : The location on disk of the collectd Python plugin. (default: '/usr/share/collectd/python')
 
+### Iostat ###
+* attributes/iostat_plugin.rb
+   - default['iostat']['path'] : The location of the iostat executable. (default: '/usr/bin/iostat')
+   - default['iostat']['verbose'] : True for verbose logging. (default: 'false')
+   - default['iostat']['include'] : Metrics to collect. (default: '["tps", "kB_read/s", "kB_wrtn/s", "kB_read", "kB_wrtn", "rrqm/s", "wrqm/s", "r/s", "w/s", "rsec/s", "rkB/s", "wsec/s", "wkB/s", "avgrq-sz", "avgqu-sz", "await", "r_await", "w_await", "svctm", "%util"]')
+   - default['iostat']['python_folder'] : The location on disk of the collectd Python plugin. (default: '/usr/share/collectd/python')
+
 ### Kafka ###
 * attributes/kafka_plugin.rb
    - default['kafka']['serviceurl'] : Your Kafka service URL (default: 'service:jmx:rmi:///jndi/rmi://localhost:7099/jmxrmi')
@@ -185,6 +192,13 @@ After supplying attributes, use `knife bootstrap` to apply the recipes to Chef c
    - default['redis_slave']['hostname'] : Hostname or IP address of your Redis slave instance.
    - default['redis_slave']['port'] : Port on which your Redis slave runs. 
    - default['redis_slave']['python_folder'] : The location on disk of the collectd Python plugin. (default: '/usr/share/collectd/python')
+
+### Vmstat ###
+* attributes/vmstat_plugin.rb
+   - default['vmstat']['path'] : The location of the vmstat executable. (default: '/usr/bin/vmstat')
+   - default['vmstat']['verbose'] : True for verbose logging. (default: 'false')
+   - default['vmstat']['include'] : Metrics to collect. (default: '["r", "b", "swpd", "free", "buff", "cache", "inact", "active", "si", "so", "bi", "bo", "in", "cs", "us", "sy", "id", "wa", "st"]')
+   - default['vmstat']['python_folder'] : The location on disk of the collectd Python plugin. (default: '/usr/share/collectd/python')
 
 ### Zookeeper ###
 * attributes/zookeeper_plugin.rb 
