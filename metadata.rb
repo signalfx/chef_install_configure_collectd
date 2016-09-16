@@ -6,7 +6,7 @@ issues_url 'https://github.com/signalfx/chef_install_configure_collectd/issues'
 license 'Copyright SignalFx, Inc. All rights reserved'
 description 'Use this cookbook to install the SignalFx collectd agent and collectd plugins.'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version '0.1.11'
+version '0.2.0'
 
 supports "centos"
 supports "amazon"

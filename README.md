@@ -10,19 +10,21 @@ Use this cookbook to install and configure collectd to send data to SignalFx. It
 - Configure collectd's write_http plugin to send data to SignalFx
 - Install and configure collectd plugins for data collection from the following software:
    - Apache webserver   
-   - Docker 
    - Cassandra 
+   - Docker
    - ElasticSearch 
+   - Iostat
    - Kafka 
    - Memcached 
    - Mesos 
+   - MongoDB
    - MySQL 
    - Nginx 
+   - Postgres
+   - Redis
    - Varnish 
+   - Vmstat
    - Zookeeper 
-   - Postgres 
-   -  Redis 
-   - MongoDB
 
 # System Requirements #
 
