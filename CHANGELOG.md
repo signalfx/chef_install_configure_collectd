@@ -1,3 +1,6 @@
+## v0.2.0
+* add fix for jmx plugin
+
 ## v0.1.11
 * added iostat plugin
 * added vmstat plugin
