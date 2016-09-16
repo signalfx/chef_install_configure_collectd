@@ -41,7 +41,7 @@
 #   points to your java application.  See 20-javageneric.conf if you want a
 #   catch-all config for any java app.
 
-TypesDB "#{node['collectd_conf_folder']}/signalfx_types_db"
+TypesDB "<%= node['collectd_conf_folder'] %>/signalfx_types_db"
 LoadPlugin java
 <Plugin java>
     JVMArg "-verbose:jni"
