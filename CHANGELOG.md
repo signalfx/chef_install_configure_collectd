@@ -1,3 +1,6 @@
+## v0.2.1
+* update mongodb recipe with latest plugin and support amazon
+
 ## v0.2.0
 * add fix for jmx plugin
 
