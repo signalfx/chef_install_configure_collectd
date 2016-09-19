@@ -148,3 +148,15 @@ def get_debian_os_name
     raise ("We do not support this system #{node['platform']}_#{node['platform_version']}")
   end
 end
+
+def pip_python_module(module_name, module_version)
+  python_pip module_name do
+    version module_version
+  end
+  # amazon requires special handling
+  execute 'pip-python install' do
+    command ['pip-python', 'install', module_name + "==" + module_version] 
+    action :run
+    only_if { node['platform'] == 'amazon' }
+  end
+end
