@@ -13,9 +13,9 @@ include_recipe 'chef_install_configure_collectd::default'
 install_package_on_redhat 'epel-release'
 install_python_pip
 
-python_pip 'py-dateutil'
-python_pip 'docker-py'
-python_pip 'jsonpath_rw'
+pip_python_module("py-dateutil", "2.2")
+pip_python_module("docker-py", "1.10.3")
+pip_python_module("jsonpath_rw", "1.4.0")
 
 directory node['docker']['python_folder'] do
   action :create
