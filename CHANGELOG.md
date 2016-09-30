@@ -1,3 +1,6 @@
+## v0.2.2
+* update docker recipe with latest plugin
+
 ## v0.2.1
 * update mongodb recipe with latest plugin and support amazon
 
