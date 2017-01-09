@@ -31,7 +31,7 @@ Use this cookbook to install and configure collectd to send data to SignalFx. It
 This cookbook has been tested on the following operating systems:
 
 CentOS 6, 7;
-Amazon Linux 1503, 1509, 1603;
+Amazon Linux 1503, 1509, 1603, 1609;
 Ubuntu 1204, 1404, 1504, 1604;
 Debian GNU/Linux 7, 8;
 
