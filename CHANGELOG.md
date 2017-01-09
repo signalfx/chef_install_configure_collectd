@@ -1,3 +1,6 @@
+## v0.2.3
+* add support for amazon linux 2016.09
+
 ## v0.2.2
 * update docker recipe with latest plugin
 
