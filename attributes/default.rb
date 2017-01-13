@@ -15,3 +15,14 @@ default['SignalFx']['collectd']['logfile']['PrintSeverity'] = false
 # set this to true to enable the dogstatsd compatible statsd listener
 default['SignalFx']['collectd']['enable_statsd'] = false
 default['SignalFx']['collectd']['statsd_port'] = 8125
+
+default['SignalFx']['collectd']['protocols']['values'] = [
+  "Icmp:InDestUnreachs",
+  "Tcp:CurrEstab",
+  "Tcp:OutSegs",
+  "Tcp:RetransSegs",
+  "TcpExt:DelayedACKs",
+  "TcpExt:DelayedACKs",
+  "/Tcp:.*Opens/",
+  "/^TcpExt:.*Octets/",
+]

@@ -70,15 +70,9 @@ LoadPlugin load
 LoadPlugin memory
 LoadPlugin protocols
 <Plugin "protocols">
-  Value "Icmp:InDestUnreachs"
-  Value "Tcp:CurrEstab"
-  Value "Tcp:OutSegs"
-  Value "Tcp:RetransSegs"
-  Value "TcpExt:DelayedACKs"
-  Value "TcpExt:DelayedACKs"
-
-  Value "/Tcp:.*Opens/"
-  Value "/^TcpExt:.*Octets/"
+<% node['SignalFx']['collectd']['protocols']['values'].each do |value| -%>
+  Value "<%= value %>"
+<% end %>
   IgnoreSelected false
 </Plugin>
 
