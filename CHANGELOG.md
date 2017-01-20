@@ -1,3 +1,6 @@
+## v0.2.4
+* Fix collectd installation on Centos-based boxes by flushing cache before install.
+
 ## v0.2.3
 * add support for amazon linux 2016.09
 

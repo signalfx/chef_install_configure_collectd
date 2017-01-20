@@ -115,6 +115,10 @@ def install_package(package_name)
       version node['collectd_version']
       action :install
     end
+  elsif node['platform'] == 'centos' or node['platform'] == 'amazon'
+    yum_package package_name do
+      flush_cache( {:before=>true, :after=>false})
+    end
   else
     package package_name
   end  
