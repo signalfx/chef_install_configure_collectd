@@ -1,3 +1,6 @@
+## v0.2.5
+* update elasticsearch plugin v1.3.2
+
 ## v0.2.4
 * Fix collectd installation on Centos-based boxes by flushing cache before install.
 
