@@ -125,7 +125,7 @@ def install_package(package_name)
 end
 
 def ubuntu_update
-  execute 'apt_update' do
+  execute 'apt_update for ubuntu' do
     command 'apt-get update'
     action :run
   end
@@ -136,7 +136,7 @@ def install_python_pip
     package ['python-pip']
   else
     package ['python-setuptools', 'python-dev', 'build-essential']
-    execute 'apt_update' do
+    execute 'apt_update for pip' do
       command 'easy_install pip'
       action :run
     end
