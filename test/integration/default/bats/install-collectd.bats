@@ -9,7 +9,11 @@ getConfigureFilePath(){
 }
 
 getConfigureFileFolder(){
-  echo "/etc/collectd.d/managed_config"
+  if [[ "$(cat /etc/issue)" == *"Ubuntu"* ]]; then
+     echo "/etc/collectd/managed_config"
+  else
+     echo "/etc/collectd.d/managed_config"
+  fi
 }
 
 
@@ -19,13 +23,13 @@ getConfigureFileFolder(){
 }
 
 @test "Collectd version test" {
-  version="$(collectd -h | grep collectd\ 5.5.0.sfx)"
+  version="$(collectd -h | grep -E "collectd\s(.+)\.sfx")"
   [ "$version" != "" ]
 }
 
 @test "Configure file exist test" {
   confFilePath=$(getConfigureFilePath)
-  [ -f $confFilePath ] 
+  [ -f $confFilePath ]
 }
 
 @test "Configure file correct test" {
@@ -42,6 +46,6 @@ getConfigureFileFolder(){
   [ -d "$confDirectory" ]
 }
 
-@test "Configure cpu plugin confige file test" {
-  [ -f "/etc/collectd.d/managed_config/10-aggregation-cpu.conf" ]
+@test "Configure cpu plugin file test" {
+  [ -f "$(getConfigureFileFolder)/10-aggregation-cpu.conf" ]
 }
