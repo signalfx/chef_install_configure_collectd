@@ -1,13 +1,13 @@
 #
 # Cookbook Name:: collectd_install_configure
-# Recipe:: config-collectd 
+# Recipe:: config-collectd
 #
 # Function:
 # This recipe can configure the basic Information for collectd
 #
 # Copyright (c) 2015 SignalFx, Inc, All Rights Reserved.
 
-require File.expand_path("../helper.rb", __FILE__)
+require File.expand_path("../../libraries/helper.rb", __FILE__)
 
 def get_collectd_conf_template
   case node['platform_family']

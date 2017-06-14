@@ -44,7 +44,7 @@ def getAWSInfo
       return "#{aws_JSON_Information['instanceId']}_#{aws_JSON_Information['region']}_#{aws_JSON_Information['accountId']}"
   end
   rescue
-    Chef::Log.warn('Unable to get AWS instance ID, Timeout while reading') 
+    Chef::Log.warn('Unable to get AWS instance ID, Timeout while reading')
     return ''
   end
 end
@@ -70,7 +70,7 @@ def getHttpUri
   uri_items = Hash.new
   aws_infor = getAWSInfo
   if aws_infor != ''
-    puts uri_items['sfxdim_AWSUniqueId'] = aws_infor 
+    puts uri_items['sfxdim_AWSUniqueId'] = aws_infor
   end
 
   chefUniqueId = getChefUniqueId
@@ -92,7 +92,7 @@ def getHttpUri
   return ingesturl
 end
 
-# ensure collectd start 
+# ensure collectd start
 
 def start_collectd
   service 'collectd' do
@@ -121,7 +121,7 @@ def install_package(package_name)
     end
   else
     package package_name
-  end  
+  end
 end
 
 def ubuntu_update
@@ -161,7 +161,7 @@ def pip_python_module(module_name, module_version)
       action :run
     end
   else
-    python_pip module_name do
+    python_package module_name do
       version module_version
     end
   end

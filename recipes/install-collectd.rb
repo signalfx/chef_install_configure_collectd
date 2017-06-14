@@ -12,9 +12,9 @@
 # - Download repo rpm
 # - install repo rpm
 #
-require File.expand_path("../helper.rb", __FILE__)
+#require File.expand_path("../helper.rb", __FILE__)
 
-#require_relative './helper.rb'
+require_relative '../libraries/helper.rb'
 
 def install_single_rpm_repo(rpm_package)
   download_file("#{SignalFx_Repo_Link}/#{rpm_package}",
@@ -31,9 +31,9 @@ end
 #
 def install_repo_rpms(os, version)
   unless node['SignalFx_rpm_repo'][os].include? version
-    raise ("Do not support your system #{node['platform']}_#{node['platform_version']}") 
+    raise ("Do not support your system #{node['platform']}_#{node['platform_version']}")
   end
-  
+
   install_single_rpm_repo(node['SignalFx_rpm_repo'][os][version]['SignalFx-repo'])
   install_single_rpm_repo(node['SignalFx_rpm_repo'][os][version]['SignalFx-Plugin-repo'])
 end
@@ -90,8 +90,8 @@ def install_in_debian
   signalfx_collectd_plugin_ppa_source = node['SignalFx_debian_ppa'][get_debian_os_name]['collectd_plugin']['uri']
   signalfx_keyid = node['SignalFx_debian_ppa']['keyid']
   execute 'add SignalFx PPA' do
-    command "apt-key adv --keyserver keyserver.ubuntu.com --recv-keys #{signalfx_keyid} && 
-             echo #{collectd_ppa_source} > /etc/apt/sources.list.d/signalfx_collectd.list && 
+    command "apt-key adv --keyserver keyserver.ubuntu.com --recv-keys #{signalfx_keyid} &&
+             echo #{collectd_ppa_source} > /etc/apt/sources.list.d/signalfx_collectd.list &&
              echo #{signalfx_collectd_plugin_ppa_source} > /etc/apt/sources.list.d/signalfx_collectd_plugin.list"
     action :run
   end

@@ -1,13 +1,13 @@
 #
-# Cookbook Name:: chef_install_configure_collectd 
-# Recipe:: config_mysql 
+# Cookbook Name:: chef_install_configure_collectd
+# Recipe:: config_mysql
 #
 # Function:
 # This recipe can configure the mysql plugin for collectd
 #
 # Copyright (c) 2015 SignalFx, Inc, All Rights Reserved.
 
-require File.expand_path("../helper.rb", __FILE__)
+require File.expand_path("../../libraries/helper.rb", __FILE__)
 
 include_recipe 'chef_install_configure_collectd::default'
 install_package_on_redhat 'collectd-mysql'
