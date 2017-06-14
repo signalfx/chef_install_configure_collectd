@@ -1,5 +1,17 @@
-## v0.2.6
-* Refactor to use `poise-python` instead of `python` cookbook.
+## v0.3.0
+* Refactor to use `poise-python` instead of `python` cookbook
+* Adding tests for `Ubuntu 14.04`, `Ubuntu 16.04`
+* Bumping `apt` cookbook to `< 6.0`
+  * Note that `apt` cookbook `~> 6.0` has breaking changes: https://github.com/chef-cookbooks/apt/blob/master/CHANGELOG.md#600-2017-02-08
+* Requiring `chef-client` at `~> 12.5`
+  * Even this version of the `chef-client` is getting very old
+* Removing testing for Chef client versions from `.travis.yml`: `12.4.1`, `12.4.3`
+* Adding testing for Chef client versions to `.travis.yml`: `12`, `12.5`, `12.17`
+* Removing unsupported platforms from `.kitchen.yml`: `centos-6.5`, `centos-5.10`
+  * These images are not available from Hashicorp (404).
+* Removing `Gemfile.lock`
+* Adding files to `.gitignore`
+* Fixing integration tests
 
 ## v0.2.5
 * update elasticsearch plugin v1.3.2
