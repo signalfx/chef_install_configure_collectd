@@ -68,6 +68,7 @@ end
 #
 
 def install_in_ubuntu
+  include_recipe 'apt::default'
   install_ppa(node['SignalFx_ppa']['collectd']['name'],
               node['SignalFx_ppa']['collectd']['uri'])
   install_ppa(node['SignalFx_ppa']['collectd_plugin']['name'],
@@ -85,6 +86,7 @@ end
 #
 
 def install_in_debian
+  include_recipe 'apt::default'
   package 'apt-transport-https'
   collectd_ppa_source = node['SignalFx_debian_ppa'][get_debian_os_name]['collectd']['uri']
   signalfx_collectd_plugin_ppa_source = node['SignalFx_debian_ppa'][get_debian_os_name]['collectd_plugin']['uri']
