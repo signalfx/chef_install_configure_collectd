@@ -9,12 +9,13 @@ gemfile:
 
 env:
   - CHEF_VERSION=master
-  - CHEF_VERSION=12.4.3
-  - CHEF_VERSION=12.4.1
+  - CHEF_VERSION=12.17
+  - CHEF_VERSION=12.5
+  - CHEF_VERSION=12
 
 before_script:
   - bundle exec berks
 
-script: 
+script:
   - bundle exec foodcritic -f any .
-  - bundle exec rspec 
+  - bundle exec rspec
