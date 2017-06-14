@@ -7,6 +7,8 @@
   * Even this version of the `chef-client` is getting very old
 * Removing testing for Chef client versions from `.travis.yml`: `12.4.1`, `12.4.3`
 * Adding testing for Chef client versions to `.travis.yml`: `12`, `12.5`, `12.17`
+* Bumping ruby version in `.travis.yml` to match ChefDK: `2.3`
+* Making `Gemfile` version pinning less restrictive
 * Removing unsupported platforms from `.kitchen.yml`: `centos-6.5`, `centos-5.10`
   * These images are not available from Hashicorp (404).
 * Removing `Gemfile.lock`
