@@ -12,9 +12,9 @@
 # - Download repo rpm
 # - install repo rpm
 #
-#require File.expand_path("../helper.rb", __FILE__)
+require File.expand_path("../helper.rb", __FILE__)
 
-require_relative '../libraries/helper.rb'
+# require_relative 'helper.rb'
 
 def install_single_rpm_repo(rpm_package)
   download_file("#{SignalFx_Repo_Link}/#{rpm_package}",

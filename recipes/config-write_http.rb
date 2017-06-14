@@ -9,7 +9,7 @@
 # This function is to get collectd configure file path. For centos and amazon,
 # the path is on /etc/collectd.conf. For ubuntu, the path is on /etc/collectd/collectd.conf.
 #
-require File.expand_path("../../libraries/helper.rb", __FILE__)
+require File.expand_path("../helper.rb", __FILE__)
 #require_relative './helper.rb'
 
 install_package_on_redhat 'collectd-write_http'

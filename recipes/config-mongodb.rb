@@ -7,7 +7,7 @@
 #
 # Copyright (c) 2015 SignalFx, Inc, All Rights Reserved.
 
-require File.expand_path("../../libraries/helper.rb", __FILE__)
+require File.expand_path("../helper.rb", __FILE__)
 
 include_recipe 'chef_install_configure_collectd::default'
 install_python_pip
