@@ -8,7 +8,7 @@ description 'Use this cookbook to install the SignalFx collectd agent and collec
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version '0.3.0'
 
-chef_version '~> 12.5'
+chef_version '>= 12.5'
 
 supports "centos"
 supports "amazon"
