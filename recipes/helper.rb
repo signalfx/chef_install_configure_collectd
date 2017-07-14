@@ -104,7 +104,7 @@ end
 #install on centos
 
 def install_package_on_redhat( package_name )
-  if node['platform'] == 'centos' or node['platform'] == 'amazon'
+  if is_redhat_node?
     install_package package_name
   end
 end
@@ -115,7 +115,7 @@ def install_package(package_name)
       version node['collectd_version']
       action :install
     end
-  elsif node['platform'] == 'centos' or node['platform'] == 'amazon'
+  elsif is_redhat_node?
     yum_package package_name do
       flush_cache( {:before=>true, :after=>false})
     end
@@ -132,7 +132,7 @@ def ubuntu_update
 end
 
 def install_python_pip
-  if node['platform'] == 'centos' or node['platform'] == 'amazon'
+  if is_redhat_node?
     package ['python-pip']
   else
     package ['python-setuptools', 'python-dev', 'build-essential']
@@ -161,8 +161,29 @@ def pip_python_module(module_name, module_version)
       action :run
     end
   else
-    python_pip module_name do
+    python_package module_name do
       version module_version
     end
   end
+end
+
+def epel_release_for_redhat
+  # RHEL doesn't support this in any simple way
+  if %w(centos amazon).include? node['platform']
+    install_package_on_redhat 'epel-release'
+  elsif node['platform'] == 'redhat'
+    remote_file "#{Chef::Config[:file_cache_path]}/epel-release.rpm" do
+      source "https://dl.fedoraproject.org/pub/epel/epel-release-latest-#{node['platform_version'][0]}.noarch.rpm"
+      action :create
+    end
+
+    rpm_package "epel-release" do
+      source "#{Chef::Config[:file_cache_path]}/epel-release.rpm"
+      action :install
+    end
+  end
+end
+
+def is_redhat_node?
+  %w(centos amazon redhat).include? node['platform']
 end

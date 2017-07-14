@@ -10,7 +10,7 @@
 #   - The ubuntu ppa link
 #
 #   Sopport operation system 
-#   - centos: 6.*, 7.* 
+#   - RHEL/centos: 6.*, 7.* 
 #   - amazon Linux: 2014.09, 2015.03, 2015.09, 2016.03, 2016.09
 #   - ubuntu : 12.04 (precise), 14.04 (trusty), 15.04 (vivid)
 #  
@@ -25,6 +25,16 @@ default['SignalFx_rpm_repo']['centos']['6']['SignalFx-Plugin-repo'] =
   'SignalFx-collectd_plugin-RPMs-centos-release-latest.noarch.rpm'
 default['SignalFx_rpm_repo']['centos']['7']['SignalFx-Plugin-repo'] =
   'SignalFx-collectd_plugin-RPMs-centos-release-latest.noarch.rpm'
+
+# RHEL uses the same repos as Centos
+default['SignalFx_rpm_repo']['rhel']['6']['SignalFx-repo'] =
+  default['SignalFx_rpm_repo']['centos']['6']['SignalFx-repo']
+default['SignalFx_rpm_repo']['rhel']['7']['SignalFx-repo'] =
+  default['SignalFx_rpm_repo']['centos']['7']['SignalFx-repo']
+default['SignalFx_rpm_repo']['rhel']['6']['SignalFx-Plugin-repo'] =
+  default['SignalFx_rpm_repo']['centos']['6']['SignalFx-Plugin-repo']
+default['SignalFx_rpm_repo']['rhel']['7']['SignalFx-Plugin-repo'] =
+  default['SignalFx_rpm_repo']['centos']['7']['SignalFx-Plugin-repo']
 
 # repo rpms for amazon linux
 default['SignalFx_rpm_repo']['amazon']['2014.09']['SignalFx-repo'] =

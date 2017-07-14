@@ -10,7 +10,7 @@
 require File.expand_path("../helper.rb", __FILE__)
 
 include_recipe 'chef_install_configure_collectd::default'
-install_package_on_redhat 'epel-release'
+epel_release_for_redhat
 package "procps"
 
 directory node['vmstat']['python_folder'] do
