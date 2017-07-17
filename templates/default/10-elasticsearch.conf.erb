@@ -13,5 +13,8 @@
         Indexes ["<%= @indexes %>"]
         EnableIndexStats true
         EnableClusterHealth true
+        <% @config.each do |key, value| -%>
+        <%= key %> <%= value %>
+        <% end -%>
     </Module>
 </Plugin>
