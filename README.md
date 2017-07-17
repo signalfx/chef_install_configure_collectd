@@ -32,18 +32,9 @@ This cookbook has been tested on the following operating systems:
 
 CentOS 6, 7;
 Amazon Linux 1503, 1509, 1603, 1609;
+RHEL 6, 7;
 Ubuntu 1204, 1404, 1504, 1604;
 Debian GNU/Linux 7, 8;
-
-# Cookbook dependencies #
-
-This cookbook requires the following cookbooks:
-
-- apt (2.8.2)
-- yum-epel (0.6.3)
-- build-essential (2.2.4)
-- yum (3.8.1)
-- python (1.4.6)
 
 # Usage #
 
