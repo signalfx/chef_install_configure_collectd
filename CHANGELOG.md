@@ -1,3 +1,9 @@
+## v0.3.0
+* Support for RHEL 6/7
+* Switching from deprecated `python` cookbook to `poise-python`
+* Adding more flexible config options for the elasticsearch plugin
+* Adding more flexible config options for the protocol plugin
+
 ## v0.2.5
 * update elasticsearch plugin v1.3.2
 
