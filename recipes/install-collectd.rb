@@ -106,6 +106,9 @@ end
 
 SignalFx_Repo_Link = node['SignalFx_rpm_repo']['uri']
 case node['platform']
+when 'redhat'
+  # Get the rhel integer version
+  install_in_redhat('rhel', node['platform_version'].to_i.to_s)
 when 'centos'
   # Get the centos integer version
   install_in_redhat('centos', node['platform_version'].to_i.to_s)

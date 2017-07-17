@@ -1,8 +1,10 @@
 LoadPlugin write_http
 <Plugin "write_http">
-  <URL "<%= @INGEST_HOST %>">
+  <Node "SignalFx">
+    URL "<%= @INGEST_HOST %>"
     User "auth"
     Password "<%= @API_TOKEN %>"
     Format "JSON"
-  </URL>
+    LogHttpError true
+  </Node>
 </Plugin>
