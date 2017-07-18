@@ -1,3 +1,6 @@
+## v0.3.1/0.3.2
+* Fixing license information, no code changes
+
 ## v0.3.0
 * Support for RHEL 6/7
 * Switching from deprecated `python` cookbook to `poise-python`
