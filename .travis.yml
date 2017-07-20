@@ -2,7 +2,7 @@ language: ruby
 sudo: false
 
 rvm:
-  - 2.0.0
+  - 2.3.1
 
 gemfile:
   - Gemfile
@@ -16,5 +16,5 @@ before_script:
   - bundle exec berks
 
 script: 
-  - bundle exec foodcritic -f any .
+  - bundle exec foodcritic -f any -t ~FC066 .
   - bundle exec rspec 

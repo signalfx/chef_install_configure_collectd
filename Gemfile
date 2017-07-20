@@ -10,7 +10,7 @@ gem "chef-vault", "~> 2.6.1"
 
 
 gem "berkshelf", "~> 4.0.1"
-gem "foodcritic", "~> 4.0.0"
+gem "foodcritic", "~> 11.3.0"
 gem "rake"
 gem "rubocop", "~> 0.28.0"
 
@@ -23,7 +23,7 @@ end
 group :development do
   gem 'guard',            '~> 2.12'
   gem 'guard-rubocop',    '~> 1.2'
-  gem 'guard-foodcritic', '~> 1.0'
+  gem 'guard-foodcritic', '~> 3.0'
   gem 'guard-kitchen',    '~> 0.0'
   gem 'guard-rspec',      '~> 4.5'
   gem 'rb-fsevent', :require => false
