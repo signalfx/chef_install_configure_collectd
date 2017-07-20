@@ -37,25 +37,9 @@ default['SignalFx_rpm_repo']['rhel']['7']['SignalFx-Plugin-repo'] =
   default['SignalFx_rpm_repo']['centos']['7']['SignalFx-Plugin-repo']
 
 # repo rpms for amazon linux
-default['SignalFx_rpm_repo']['amazon']['2014.09']['SignalFx-repo'] =
+default['SignalFx_rpm_repo']['amazon']['all']['SignalFx-repo'] =
   'SignalFx-collectd-RPMs-AWS_EC2_Linux-release-latest.noarch.rpm'
-default['SignalFx_rpm_repo']['amazon']['2015.03']['SignalFx-repo'] =
-  'SignalFx-collectd-RPMs-AWS_EC2_Linux-release-latest.noarch.rpm'
-default['SignalFx_rpm_repo']['amazon']['2015.09']['SignalFx-repo'] =
-  'SignalFx-collectd-RPMs-AWS_EC2_Linux-release-latest.noarch.rpm'
-default['SignalFx_rpm_repo']['amazon']['2016.03']['SignalFx-repo'] =
-  'SignalFx-collectd-RPMs-AWS_EC2_Linux-release-latest.noarch.rpm'
-default['SignalFx_rpm_repo']['amazon']['2016.09']['SignalFx-repo'] =
-  'SignalFx-collectd-RPMs-AWS_EC2_Linux-release-latest.noarch.rpm'
-default['SignalFx_rpm_repo']['amazon']['2014.09']['SignalFx-Plugin-repo'] =
-  'SignalFx-collectd_plugin-RPMs-AWS_EC2_Linux-release-latest.noarch.rpm'
-default['SignalFx_rpm_repo']['amazon']['2015.03']['SignalFx-Plugin-repo'] =
-  'SignalFx-collectd_plugin-RPMs-AWS_EC2_Linux-release-latest.noarch.rpm'
-default['SignalFx_rpm_repo']['amazon']['2015.09']['SignalFx-Plugin-repo'] =
-  'SignalFx-collectd_plugin-RPMs-AWS_EC2_Linux-release-latest.noarch.rpm'
-default['SignalFx_rpm_repo']['amazon']['2016.03']['SignalFx-Plugin-repo'] =
-  'SignalFx-collectd_plugin-RPMs-AWS_EC2_Linux-release-latest.noarch.rpm'
-default['SignalFx_rpm_repo']['amazon']['2016.09']['SignalFx-Plugin-repo'] =
+default['SignalFx_rpm_repo']['amazon']['all']['SignalFx-Plugin-repo'] =
   'SignalFx-collectd_plugin-RPMs-AWS_EC2_Linux-release-latest.noarch.rpm'
 
 # repo rpms uri

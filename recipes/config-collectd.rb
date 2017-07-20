@@ -11,7 +11,7 @@ require File.expand_path("../helper.rb", __FILE__)
 
 def get_collectd_conf_template
   case node['platform_family']
-    when 'rhel'
+    when 'rhel', 'amazon'
       return 'collectd-rhel.conf.erb'
     when 'debian'
       return 'collectd.conf.erb'
