@@ -1,3 +1,6 @@
+## v0.3.3
+* Adding support for Amazon Linux 2017.03 and all future versions
+
 ## v0.3.1/0.3.2
 * Fixing license information, no code changes
 

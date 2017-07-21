@@ -113,7 +113,7 @@ when 'centos'
   # Get the centos integer version
   install_in_redhat('centos', node['platform_version'].to_i.to_s)
 when 'amazon'
-  install_in_redhat('amazon', node['platform_version'])
+  install_in_redhat('amazon', 'all')
 when 'ubuntu'
   install_in_ubuntu
 when 'debian'
