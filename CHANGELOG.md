@@ -1,3 +1,6 @@
+## v0.3.4
+* Adding support for Debian 9 (Stretch)
+
 ## v0.3.3
 * Adding support for Amazon Linux 2017.03 and all future versions
 

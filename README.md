@@ -34,7 +34,7 @@ CentOS 6, 7;
 Amazon Linux 1503, 1509, 1603, 1609;
 RHEL 6, 7;
 Ubuntu 1204, 1404, 1504, 1604;
-Debian GNU/Linux 7, 8;
+Debian GNU/Linux 7, 8, 9;
 
 # Usage #
 
