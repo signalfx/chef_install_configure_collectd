@@ -86,6 +86,7 @@ end
 
 def install_in_debian
   package 'apt-transport-https'
+  package 'dirmngr' if get_debian_os_name == 'stretch'
   collectd_ppa_source = node['SignalFx_debian_ppa'][get_debian_os_name]['collectd']['uri']
   signalfx_collectd_plugin_ppa_source = node['SignalFx_debian_ppa'][get_debian_os_name]['collectd_plugin']['uri']
   signalfx_keyid = node['SignalFx_debian_ppa']['keyid']
