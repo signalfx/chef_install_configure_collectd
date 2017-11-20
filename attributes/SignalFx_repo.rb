@@ -63,9 +63,16 @@ default['SignalFx_debian_ppa']['wheezy']['collectd']['uri'] =
   'deb https://dl.signalfx.com/debs/collectd/wheezy/release /'
 default['SignalFx_debian_ppa']['wheezy']['collectd_plugin']['uri'] = 
   'deb https://dl.signalfx.com/debs/signalfx-collectd-plugin/wheezy/release /'
+
 default['SignalFx_debian_ppa']['jessie']['collectd']['uri'] = 
   'deb https://dl.signalfx.com/debs/collectd/jessie/release /'
 default['SignalFx_debian_ppa']['jessie']['collectd_plugin']['uri'] = 
   'deb https://dl.signalfx.com/debs/signalfx-collectd-plugin/jessie/release /'
+
+default['SignalFx_debian_ppa']['stretch']['collectd']['uri'] = 
+  'deb https://dl.signalfx.com/debs/collectd/stretch/release /'
+default['SignalFx_debian_ppa']['stretch']['collectd_plugin']['uri'] = 
+  'deb https://dl.signalfx.com/debs/signalfx-collectd-plugin/stretch/release /'
+
 default['SignalFx_debian_ppa']['keyid'] = 
   '185894C15AE495F6'
