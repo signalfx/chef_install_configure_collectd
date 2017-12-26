@@ -4,25 +4,24 @@
 #
 #     apt-get install collectd-java collectd-generic-jmx
 #
-#   If your collectd log shows an error loading java.so, see
-#   http://www.willdurness.com/collectinggraphing-information-on-neo4j-via-collectd-and-graphite/
-#   and how they setup LD_LIBRARY_PATH.  The basic problem is
-#   collectd wants open JDK 6.  You can fix this by adding
+#   If your collectd log shows an error loading java.so, this
+#   is likely because libjvm.so is in a non-standard location.
+#   You can fix this by adding:
 #
 #   export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/lib/jvm/java-7-oracle/jre/lib/amd64/server
 #
 #   to your collectd init file, but pointing to the correct
-#   library path for your java install.
+#   library path for your java install. For more information on the topic and
+#   other workarounds see: https://bugzilla.redhat.com/show_bug.cgi?id=1212151
 #
 #   You need to install the signalfx_types_db on your system and reference it
-#   from this config file:
-#     cp signalfx_types_db /etc/collectd/signalfx_types_db
+#   in the "TypesDB" entry that appears later on in this configuration file. For example:
+#     cp signalfx_types_db /usr/share/collectd/java-collectd-plugin/signalfx_types_db
 #
-#   If you get the error "Blah blah" it could be because you're version of java is different
-#   than the version of java that collectd was compiled with.  This is especially true for people
-#   running java 6.  To resolve this, you need to compile collectd from source on a machine using
-#   the same setup of java you want, and copy over the .jar files it generates to the jars inside
-#   Djava.class.path.
+#   If you get an error message that contains the phrase "class file has wrong version" it is likely
+#   because your version of java is different than the version of java that collectd was compiled with.
+#   This is especially true for people running java 6.  To resolve this, you need to compile collectd from source on a machine using
+#   the same setup of java you want, and copy over the .jar files that it generates to the jars inside -Djava.class.path.
 #
 #   If the plugin appears to load but you don't see any metrics, you may need to specify
 #   a InstancePrefix parameter to give your metrics readable names.
