@@ -124,6 +124,21 @@ def install_package(package_name)
   end  
 end
 
+def install_plugin_package(package_name)
+  if node.include? 'collectd_plugin_version' and node['collectd_plugin_version'] != 'latest'
+    package package_name do
+      version node['collectd_plugin_version']
+      action :install
+    end
+  elsif is_redhat_node?
+    yum_package package_name do
+      flush_cache( {:before=>true, :after=>false})
+    end
+  else
+    package package_name
+  end
+end
+
 def ubuntu_update
   execute 'apt_update' do
     command 'apt-get update'
