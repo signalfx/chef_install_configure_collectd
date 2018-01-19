@@ -6,6 +6,11 @@ def download_file(remote_link, local_location)
   end
 end
 
+def does_not_include_plugin?(item)
+  return true if 'item' !~ /'plugin'/
+  return false
+end
+
 # install rpms package
 
 def install_rpm_package(name, location)
@@ -42,9 +47,9 @@ def getAWSInfo
       aws_metadata = open('http://169.254.169.254/2014-11-05/dynamic/instance-identity/document'){ |io| data = io.read }
       aws_JSON_Information = JSON.parse(aws_metadata)
       return "#{aws_JSON_Information['instanceId']}_#{aws_JSON_Information['region']}_#{aws_JSON_Information['accountId']}"
-  end
+    end
   rescue
-    Chef::Log.warn('Unable to get AWS instance ID, Timeout while reading') 
+    Chef::Log.warn('Unable to get AWS instance ID, Timeout while reading')
     return ''
   end
 end
@@ -70,7 +75,7 @@ def getHttpUri
   uri_items = Hash.new
   aws_infor = getAWSInfo
   if aws_infor != ''
-    puts uri_items['sfxdim_AWSUniqueId'] = aws_infor 
+    puts uri_items['sfxdim_AWSUniqueId'] = aws_infor
   end
 
   chefUniqueId = getChefUniqueId
@@ -92,7 +97,7 @@ def getHttpUri
   return ingesturl
 end
 
-# ensure collectd start 
+# ensure collectd start
 
 def start_collectd
   service 'collectd' do
@@ -110,10 +115,15 @@ def install_package_on_redhat( package_name )
 end
 
 def install_package(package_name)
-  if node.include? 'collectd_version' and node['collectd_version'] != 'latest'
+  if package_name.include?('plugin') and node['collectd_version_plugin'] != 'latest'
+    package package_name do
+      version node['collectd_version_plugin']
+      action node['SignalFx']['collectd']['install_action']
+    end
+  elsif does_not_include_plugin?(package_name) == false and node['collectd_version'] != 'latest'
     package package_name do
       version node['collectd_version']
-      action :install
+      action node['SignalFx']['collectd']['install_action']
     end
   elsif is_redhat_node?
     yum_package package_name do
@@ -121,8 +131,9 @@ def install_package(package_name)
     end
   else
     package package_name
-  end  
+  end
 end
+
 
 def ubuntu_update
   execute 'apt_update' do
