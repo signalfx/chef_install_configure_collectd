@@ -5,6 +5,8 @@ default['write_http']['API_TOKEN'] = ''
 default['collectd_version'] = 'latest'
 default['collectd_plugin_version'] = 'latest'
 
+default['SignalFx']['collectd']['install_action'] = 'install'
+
 default['SignalFx']['collectd']['interval'] = 10
 default['SignalFx']['collectd']['timeout'] = 2
 default['SignalFx']['collectd']['FQDNLookup'] = true
