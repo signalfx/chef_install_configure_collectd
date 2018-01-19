@@ -11,7 +11,6 @@ def does_not_include_plugin?(item)
   return false
 end
 
-
 # install rpms package
 
 def install_rpm_package(name, location)
