@@ -103,16 +103,16 @@ end
 
 #install on centos
 
-def install_package_on_redhat( package_name )
+def install_package_on_redhat( package_name, package_version = nil)
   if is_redhat_node?
-    install_package package_name
+    install_package(package_name, package_version)
   end
 end
 
-def install_package(package_name)
-  if node.include? 'collectd_version' and node['collectd_version'] != 'latest'
+def install_package(package_name, package_version = nil)
+  if !package_version.nil? && package_version != 'latest'
     package package_name do
-      version node['collectd_version']
+      version package_version
       action :install
     end
   elsif is_redhat_node?
